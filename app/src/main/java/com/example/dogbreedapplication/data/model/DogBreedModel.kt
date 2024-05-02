@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class DogBreedModel(
     @SerializedName("message")
-    val message: MessageModel? = MessageModel(),
+    val message: MessageModel? = null,
     @SerializedName("status")
     val status: String? = ""
 )

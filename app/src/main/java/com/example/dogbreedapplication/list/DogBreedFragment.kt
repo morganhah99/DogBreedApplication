@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.dogbreedapplication.R
 import com.example.dogbreedapplication.databinding.FragmentDogBreedBinding
 
@@ -16,8 +18,14 @@ class DogBreedFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         binding = FragmentDogBreedBinding.inflate(inflater, container, false)
+        val dogBreedViewModel =
+            ViewModelProvider(this).get(DogBreedViewModel::class.java)
+
+
+
+        // Inflate the layout for this fragment
+
         return binding.root
     }
 
