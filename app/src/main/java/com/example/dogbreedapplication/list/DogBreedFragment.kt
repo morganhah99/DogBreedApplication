@@ -5,9 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.dogbreedapplication.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dogbreedapplication.databinding.FragmentDogBreedBinding
 
 class DogBreedFragment : Fragment() {
@@ -22,12 +21,19 @@ class DogBreedFragment : Fragment() {
         val dogBreedViewModel =
             ViewModelProvider(this).get(DogBreedViewModel::class.java)
 
-
-
-        // Inflate the layout for this fragment
-
+        binding.apply {
+            dogBreedViewModel.dogBreedList.observe(viewLifecycleOwner) { dogBreedModel ->
+                val breedList = listOf(dogBreedModel) // Create a list containing only the current DogBreedModel
+                rvDogBreeds.apply {
+                    layoutManager = LinearLayoutManager(context)
+                    adapter = DogBreedAdapter(breedList)
+                }
+            }
+        }
         return binding.root
     }
 
 
 }
+
+

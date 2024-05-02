@@ -1,9 +1,11 @@
 package com.example.dogbreedapplication.list
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.example.dogbreedapplication.R
 import com.example.dogbreedapplication.data.model.DogBreedModel
 import com.example.dogbreedapplication.databinding.ItemDogBreedBinding
 
@@ -17,22 +19,25 @@ class DogBreedAdapter(
 
         fun updateUI(dogBreedModel: DogBreedModel) {
             binding.apply {
-                val item_breed = dogBreedModel.message?.breeds?.keys?.firstOrNull() ?: ""
-                tvDogBreed.text = "Breed: $item_breed"
+                val itemBreed = dogBreedModel.message?.breeds?.keys?.firstOrNull() ?: ""
+                tvDogBreed.text = itemBreed
             }
         }
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DogBreedViewHolder {
-        TODO("Not yet implemented")
+        return DogBreedViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_dog_breed, parent, false)
+        )
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount() = breedList.size
 
     override fun onBindViewHolder(holder: DogBreedViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.updateUI(breedList[position])
+//        holder.binding.root.setOnClickListener{
+//            function.invoke(breedList[position])
+//        }
     }
 }
