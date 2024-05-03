@@ -1,4 +1,4 @@
-package com.example.dogbreedapplication.list
+package com.example.dogbreedapplication.ui.list
 
 import android.util.Log
 import androidx.lifecycle.LiveData
