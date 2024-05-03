@@ -23,7 +23,7 @@ class DogBreedFragment : Fragment() {
 
         binding.apply {
             dogBreedViewModel.dogBreedList.observe(viewLifecycleOwner) { dogBreedModel ->
-                val breedList = listOf(dogBreedModel) // Create a list containing only the current DogBreedModel
+                val breedList = listOf(dogBreedModel)
                 rvDogBreeds.apply {
                     layoutManager = LinearLayoutManager(context)
                     adapter = DogBreedAdapter(breedList)

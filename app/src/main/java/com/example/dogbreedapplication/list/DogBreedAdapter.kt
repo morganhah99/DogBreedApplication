@@ -11,13 +11,14 @@ import com.example.dogbreedapplication.databinding.ItemDogBreedBinding
 
 class DogBreedAdapter(
     val breedList: List<MessageModel>
-) : RecyclerView.Adapter<DogBreedAdapter.DogBreedViewHolder>() {
+) : Adapter<DogBreedAdapter.DogBreedViewHolder>() {
 
     inner class DogBreedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ItemDogBreedBinding.bind(itemView)
 
         fun updateUI(messageModel: MessageModel) {
-            binding.tvDogBreed.text = messageModel.breeds?.keys?.firstOrNull() ?: ""
+            val breedsString = messageModel.breeds?.keys?.joinToString(separator = ", ") ?: ""
+            binding.tvDogBreed.text = breedsString
         }
     }
 
