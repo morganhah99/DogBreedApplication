@@ -6,13 +6,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dogbreedapplication.data.api.RetrofitInstance
-import com.example.dogbreedapplication.data.model.DogBreedModel
+import com.example.dogbreedapplication.data.model.MessageModel
 import kotlinx.coroutines.launch
 
 class DogBreedViewModel : ViewModel() {
 
-    private val _dogBreedList = MutableLiveData<DogBreedModel>()
-    val dogBreedList: LiveData<DogBreedModel> = _dogBreedList
+    private val _dogBreedList = MutableLiveData<MessageModel>()
+    val dogBreedList: LiveData<MessageModel> = _dogBreedList
 
     init {
         getDogBreeds()
@@ -23,9 +23,12 @@ class DogBreedViewModel : ViewModel() {
 
             val result = RetrofitInstance.apiClient.getDogBreeds()
 
-            val message = result.message
+            Log.d("Hello world", "$result")
 
-            if (message?.breeds != null) {
+
+
+
+            if (result.breeds?.isNotEmpty() == true) {
                 Log.d("DogBreedViewModel", "Dog breeds loaded successfully")
                 _dogBreedList.postValue(result)
             }
