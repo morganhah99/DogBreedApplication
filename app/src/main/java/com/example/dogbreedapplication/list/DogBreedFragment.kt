@@ -25,6 +25,10 @@ class DogBreedFragment : Fragment() {
         val dogBreedViewModel =
             ViewModelProvider(this).get(DogBreedViewModel::class.java)
 
+        //Observers observe changes in this case, dogBreedList LiveData object in the dogBreedViewModel
+        //When the dogBreedList changes, the onChanged lambda function is called.
+        //Inside of it, the new dogBreedModel value is received, and a new list is breedList containing
+        //the single dogBreedModel is created
         binding.apply {
             dogBreedViewModel.dogBreedList.observe(viewLifecycleOwner) { dogBreedModel ->
                 val breedList = listOf(dogBreedModel)
