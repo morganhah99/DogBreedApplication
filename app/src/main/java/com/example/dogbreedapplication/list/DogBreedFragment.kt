@@ -9,6 +9,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dogbreedapplication.databinding.FragmentDogBreedBinding
 
+
+//The fragment represents a portion of user interface or behavior within an activity
+//The fragments are commonly used to host the RecyclerView and manage its interaction
+//with the rest of the app. Fragments contain the RecyclerView and its adapter
 class DogBreedFragment : Fragment() {
 
     private lateinit var binding: FragmentDogBreedBinding

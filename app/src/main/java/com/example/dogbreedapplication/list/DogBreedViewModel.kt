@@ -9,6 +9,10 @@ import com.example.dogbreedapplication.data.api.RetrofitInstance
 import com.example.dogbreedapplication.data.model.MessageModel
 import kotlinx.coroutines.launch
 
+
+//ViewModel stores UI-related data in a lifecycle-conscious way.
+//In the context of RecyclerView, a ViewModel can hold the data that
+//needs to be displayed in the RecyclerView
 class DogBreedViewModel : ViewModel() {
 
     private val _dogBreedList = MutableLiveData<MessageModel>()
